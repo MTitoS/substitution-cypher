@@ -35,9 +35,15 @@ int substituteCharacters(char key[26], char text[30]) {
 
     for (int i = 0; i < strlen(text); i++) {
         if (isTextAlphabetical(text[i])) {
+            //TO-DO: Se a letra for A então ela corresponde a key[0], e assim suscetivamente.
             toCompare[i] = toupper(text[i]);
+            int keyIndex = toCompare[i] - base;
 
-            //TO-DO: Regra que se a letra for A então ela corresponde a key[0], e assim suscetivamente.
+            if (isupper(text[i])) {
+                encodedText[i] = key[keyIndex];
+            } else {
+                encodedText[i] = tolower(key[keyIndex]);
+            }
 
             printf("%c", encodedText[i]);
         }
@@ -56,6 +62,6 @@ bool isTextAlphabetical(char text) {
         return false;
     }
            
-    printf("%s", text);
+    printf("%c", text);
     return false;
 }
